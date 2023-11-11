@@ -37,7 +37,7 @@ const App = () => {
             categories.map((category, idx) => (
               <>
                 <Route
-                  path={`/:${category.category_name}`}
+                  path={`/KhabriBhai/:${category.category_name}`}
                   element={
                     <News
                       setProgress={setProgress}
