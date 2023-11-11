@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/KhabriBhai/static/css/main.3a4c41ec.css",
-    "main.js": "/KhabriBhai/static/js/main.1a865353.js",
+    "main.js": "/KhabriBhai/static/js/main.1106a168.js",
     "static/js/787.4c026eef.chunk.js": "/KhabriBhai/static/js/787.4c026eef.chunk.js",
     "static/media/loader.gif": "/KhabriBhai/static/media/loader.4ccf66d6c90d5e390230.gif",
     "index.html": "/KhabriBhai/index.html",
     "main.3a4c41ec.css.map": "/KhabriBhai/static/css/main.3a4c41ec.css.map",
-    "main.1a865353.js.map": "/KhabriBhai/static/js/main.1a865353.js.map",
+    "main.1106a168.js.map": "/KhabriBhai/static/js/main.1106a168.js.map",
     "787.4c026eef.chunk.js.map": "/KhabriBhai/static/js/787.4c026eef.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.3a4c41ec.css",
-    "static/js/main.1a865353.js"
+    "static/js/main.1106a168.js"
   ]
 }
