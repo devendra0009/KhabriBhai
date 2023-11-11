@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/News-App/static/css/main.073c9b0a.css",
-    "main.js": "/News-App/static/js/main.868f7496.js",
-    "static/js/787.4c026eef.chunk.js": "/News-App/static/js/787.4c026eef.chunk.js",
-    "static/media/loader.gif": "/News-App/static/media/loader.4ccf66d6c90d5e390230.gif",
-    "index.html": "/News-App/index.html",
-    "main.073c9b0a.css.map": "/News-App/static/css/main.073c9b0a.css.map",
-    "main.868f7496.js.map": "/News-App/static/js/main.868f7496.js.map",
-    "787.4c026eef.chunk.js.map": "/News-App/static/js/787.4c026eef.chunk.js.map"
+    "main.css": "/KhabriBhai/static/css/main.686479bf.css",
+    "main.js": "/KhabriBhai/static/js/main.0e09e1d2.js",
+    "static/js/787.4c026eef.chunk.js": "/KhabriBhai/static/js/787.4c026eef.chunk.js",
+    "static/media/loader.gif": "/KhabriBhai/static/media/loader.4ccf66d6c90d5e390230.gif",
+    "index.html": "/KhabriBhai/index.html",
+    "main.686479bf.css.map": "/KhabriBhai/static/css/main.686479bf.css.map",
+    "main.0e09e1d2.js.map": "/KhabriBhai/static/js/main.0e09e1d2.js.map",
+    "787.4c026eef.chunk.js.map": "/KhabriBhai/static/js/787.4c026eef.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.073c9b0a.css",
-    "static/js/main.868f7496.js"
+    "static/css/main.686479bf.css",
+    "static/js/main.0e09e1d2.js"
   ]
 }
