@@ -1,56 +1,75 @@
-// import PropTypes from 'prop-types';
-import React, { Component } from 'react';
-import {
-  Link
-} from "react-router-dom";
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import logo from '../assets/logo.png';
+import './Navbar.css';
 
-export class navbar extends Component {
-  static propTypes = {};
-
-  render() {
-    return <div>
-        <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-  <div className="container-fluid">
-    <Link className="navbar-brand" to="/general">Navbar</Link>
-    <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span className="navbar-toggler-icon"></span>
-    </button>
-    <div className="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-        <li className="nav-item">
-          <Link className="nav-link " aria-current="page"   to="/general">Home</Link>
-        </li>
-        <li className="nav-item">
-        
-          <Link className="nav-link"  to="/about">About</Link>
-        </li> 
-        <li className="nav-item">
-          <Link className="nav-link"  to="/general">General</Link>
-        </li> 
-        <li className="nav-item">
-          <Link className="nav-link"  to="/business">Business</Link>
-        </li> 
-        <li className="nav-item">
-          <Link className="nav-link"  to="/entertainment">Entertainment</Link>
-        </li> 
-        <li className="nav-item">
-          <Link className="nav-link"  to="/health">Health</Link>
-        </li> 
-        <li className="nav-item">
-          <Link className="nav-link"  to="/science">Science</Link>
-        </li> 
-        <li className="nav-item">
-          <Link className="nav-link"  to="/sports">Sports</Link>
-        </li> 
-        <li className="nav-item">
-          <Link className="nav-link"  to="/technology">Technology</Link>
-        </li> 
-      </ul>
+const Navbar = () => {
+  const [isMobile, setIsMobile] = useState(false);
+  return (
+      <nav>
+        <div className="mainNav">
+          {isMobile && (
+            <>
+              <Link className="link" to="/general">
+                Navbar
+              </Link>
+              <button
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
+              >
+                <span>See </span>
+              </button>
+            </>
+          )}
+          <Link className='link' to="/general">
+          <img src={logo} alt="khabri img" className="logo" />
+          </Link>
+          <div className="linkGroup">
+            {/* <li>
+              <Link className='link' to="/about">About</Link>
+            </li> */}
+            <div className="linkGroup1">
+              <li>
+                <Link className="link" to="/business">
+                  Business
+                </Link>
+              </li>
+              <li>
+                <Link className="link" to="/entertainment">
+                  Fun
+                </Link>
+              </li>
+              <li>
+                <Link className="link" to="/health">
+                  Health
+                </Link>
+              </li>
+            </div>
+            <div className="linkGroup2">
+              <li>
+                <Link className="link" to="/science">
+                  Science
+                </Link>
+              </li>
+              <li>
+                <Link className="link" to="/sports">
+                  Sports
+                </Link>
+              </li>
+              <li>
+                <Link className="link" to="/technology">
+                  Technology
+                </Link>
+              </li>
+            </div>
+          </div>
         </div>
-  </div>
-</nav>
-    </div>;
-  }
-}
+      </nav>
+  );
+};
 
-export default navbar;
+export default Navbar;

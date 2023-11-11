@@ -1,30 +1,48 @@
-import React, { Component } from 'react';
-
-export class NewsItem extends Component {
-  render() {
-    let { title, description, imageUrl, newsUrl, author, publishedAt, source } = this.props; //destructuring
-    return <>
-      <div className="card my-3" >
-        <div style={{
-          display: 'flex',
-          position: 'absolute',
-          left: 0
-        }}>
-          <span className="badge rounded-pill bg-danger" >{source}</span>
-        </div>
-        
-        <img src={imageUrl ? imageUrl : "https://www.cnet.com/a/img/J3SOjv5Md4V3KUAmc--xjNMMV3Y=/1200x630/2021/10/18/5919fe6b-343e-49a7-a740-133f077ee253/gettyimages-1235434128.jpg"} className="card-img-top" alt="Loading..." />
-        <div className="card-body">
-          <h5 className="card-title">{title}</h5>
-          <span className="card-author"> ---{author ? author : "Investor's Business Daily"}</span>
-          <p className="card-text">{description}...</p>
-          <p className="card-text"><small className="text-muted">By {author ? author : "Investor's Business Daily"} --At {new Date(publishedAt).toGMTString()}</small></p>
-          <a href={newsUrl} target="_blank" rel="noreferrer" className="btn btn-dark">Read More</a>
-        </div>
+import React from 'react';
+import './NewsItem.css';
+const NewsItem = ({
+  title,
+  description,
+  imageUrl,
+  newsUrl,
+  author,
+  publishedAt,
+  source,
+}) => {
+  return (
+    <div className="container">
+      <div className="badge">
+        <span>{source}</span>
       </div>
-    </>;
-  }
-}
+
+      <img
+        className="newsImg"
+        src={
+          imageUrl
+            ? imageUrl
+            : 'https://www.cnet.com/a/img/J3SOjv5Md4V3KUAmc--xjNMMV3Y=/1200x630/2021/10/18/5919fe6b-343e-49a7-a740-133f077ee253/gettyimages-1235434128.jpg'
+        }
+        alt="news img"
+      />
+      <div className="details">
+        <h5 className="title">{title}</h5>
+        <span className="author">
+          {' '}
+          --{author ? author : "Investor's Business Daily"}
+        </span>
+        <p className="desc"> {description}</p>
+        <p>
+          <small>
+            By {author ? author : "Investor's Business Daily"} --At{' '}
+            {new Date(publishedAt).toGMTString()}
+          </small>
+        </p>
+        <a className="readMore" href={newsUrl} target="_blank" rel="noreferrer">
+          Read More
+        </a>
+      </div>
+    </div>
+  );
+};
 
 export default NewsItem;
-

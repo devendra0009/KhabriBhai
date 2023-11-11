@@ -1,0 +1,56 @@
+/* Add these styles to your CSS file */
+.skeleton-news-item {
+    position: relative;
+    animation: pulse 1.5s infinite;
+  }
+  
+  .skeleton-badge,
+  .skeleton-image,
+  .skeleton-title,
+  .skeleton-author,
+  .skeleton-description,
+  .skeleton-info {
+    background-color: #e0e0e0;
+    border-radius: 4px;
+    margin-bottom: 8px;
+  }
+  
+  .skeleton-badge {
+    width: 60px;
+    height: 20px;
+  }
+  
+  .skeleton-image {
+    width: 100%;
+    height: 150px;
+  }
+  
+  .skeleton-title {
+    width: 80%;
+    height: 20px;
+  }
+  
+  .skeleton-author {
+    width: 50%;
+    height: 15px;
+  }
+  
+  .skeleton-description {
+    width: 90%;
+    height: 15px;
+  }
+  
+  .skeleton-info {
+    width: 40%;
+    height: 12px;
+  }
+  
+  @keyframes pulse {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.5;
+    }
+  }
+  

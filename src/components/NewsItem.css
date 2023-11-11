@@ -1,0 +1,47 @@
+.container {
+  position: relative;
+  border: 1px solid gray;
+  padding: 1rem;
+  border-radius: 8px;
+  border-color: gainsboro;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  &:hover {
+    transform: scale(1.02, 1.02);
+  }
+  img {
+    width: 100%;
+  height: 200px;
+  }
+}
+.badge {
+  background-color: red;
+  border-radius: 0 8px;
+  position: absolute;
+  left: 1;
+}
+.details {
+    .title{
+        font-size: 20px;
+        margin-top: 5px;
+        height: 100px;
+        overflow-y: scroll;
+    }
+    .author{
+        font-size: 13px;
+    }
+    .desc{
+        margin-top: 5px;
+        height: 100px;
+        overflow-y: scroll;
+    }
+}
+
+
+.readMore {
+  text-decoration: none;
+  background-color: lightgreen;
+  padding: 5px;
+  border: 1px solid green;
+  border-radius: 6px;
+  color: black;
+}
