@@ -5,48 +5,55 @@ import PropTypes from 'prop-types';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import SkeletonNewsItem from './NewsSkeleton';
 import './News.css';
+import { useParams } from 'react-router-dom';
+import axios from 'axios';
 
 const News = (props) => {
   const [articles, setArticles] = useState([]);
-  const [page, setPage] = useState(1);
+  // const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
-  const [totalResults, setTotalResults] = useState(0);
+  // const [totalResults, setTotalResults] = useState(-1);
+  const { hindi } = useParams();
+  // console.log(params);
+  const NEWS_API = process.env.REACT_APP_NEWS_API;
+  // console.log(NEWS_API);
 
-  const capitalizeFirstLetter = (string) => {
-    return string.charAt(0).toUpperCase() + string.slice(1);
-  };
+  // const capitalizeFirstLetter = (string) => {
+  //   return string.charAt(0).toUpperCase() + string.slice(1);
+  // };
 
-  const updateNews = async () => {
-    props.setProgress(0);
-    let url = `https://newsapi.org/v2/top-headlines?country=${props.country}&category=${props.category}&apiKey=${props.apiKey}&page=${page}&pagesize=${props.pageSize}`;
-    setLoading(true);
+  const fetchNews = async () => {
+    try {
+      props.setProgress(0);
+      let url = `https://newsapi.in/newsapi/news.php?key=${NEWS_API}&category=${hindi}`;
+      // let url = `https://newsapi.org/v2/top-headlines?country=${props.country}&category=${props.category}&apiKey=${props.apiKey}&page=${page}&pagesize=${props.pageSize}`;
+      setLoading(true);
 
-    let data = await fetch(url);
-    props.setProgress(30);
-    let parsedData = await data.json();
-    props.setProgress(70);
-
-    setArticles(parsedData.articles);
-    setLoading(false);
-    setTotalResults(parsedData.totalResults);
-
-    props.setProgress(100);
+      let res = await axios.get(url);
+      props.setProgress(30);
+      // console.log(res);
+      let data = await res.data.News;
+      if (res.data.message === 'No news found') {
+        setArticles([]);
+        // setTotalResults(0);
+      } else {
+        props.setProgress(70);
+        // console.log(data);
+        setArticles(data);
+        // console.log(articles);
+        // setTotalResults(data.length);
+      }
+      setLoading(false);
+      props.setProgress(100);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   useEffect(() => {
-    updateNews();
+    fetchNews();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  const loadFunc = async () => {
-    setPage(page + 1);
-    let url = `https://newsapi.org/v2/top-headlines?country=${props.country}&category=${props.category}&apiKey=${props.apiKey}&page=${page}&pagesize=${props.pageSize}`;
-    let data = await fetch(url);
-    let parsedData = await data.json();
-    setArticles((prevArticles) => prevArticles.concat(parsedData.articles));
-    setLoading(false);
-    setTotalResults(parsedData.totalResults);
-  };
+  }, [hindi]);
 
   return (
     <div className="mainContainer">
@@ -54,7 +61,7 @@ const News = (props) => {
       <div className="loader text-center">
         {loading && (
           <div className="containerSkeleton">
-            {Array(12)
+            {Array(100)
               .fill()
               .map((_, index) => (
                 <SkeletonNewsItem key={index} />
@@ -62,23 +69,12 @@ const News = (props) => {
           </div>
         )}
       </div>
-      <InfiniteScroll
-        dataLength={articles.length}
-        next={loadFunc}
-        hasMore={articles.length !== totalResults}
-        loader={
-          <div className="logo">
-            {' '}
-            <Spinner />
-          </div>
-        }
-      >
-        <div className="containerNews">
-          {/* <div className='row'> */}
-          {articles.map((element) => (
-            <div key={element.url}>
+      {articles ? (
+        articles.map((element, idx) => (
+          <div className="containerNews">
+            <div key={element.id}>
               <NewsItem
-                imageUrl={element.urlToImage}
+                imageUrl={element.image}
                 title={
                   element.title ? element.title : 'Read this interesting News'
                 }
@@ -89,22 +85,16 @@ const News = (props) => {
                 }
                 newsUrl={element.url}
                 author={element.author}
-                publishedAt={element.publishedAt}
-                source={element.source.name}
+                publishedAt={element.published_date}
               />
             </div>
-          ))}
-          {/* </div> */}
-        </div>
-      </InfiniteScroll>
+          </div>
+        ))
+      ) : (
+        <h3 style={{ textAlign:"center", color:"red" }}>** No Articles Found / Your Daily Limit is Over **</h3>
+      )}
     </div>
   );
-};
-
-News.defaultProps = {
-  country: 'in',
-  pageSize: 8,
-  category: 'general',
 };
 
 News.propTypes = {

@@ -3,36 +3,25 @@ import { Link } from 'react-router-dom';
 import logo from '../assets/logo.png';
 import './Navbar.css';
 
-const Navbar = () => {
-  const [isMobile, setIsMobile] = useState(false);
+const Navbar = ({ categories }) => {
+  console.log(categories, categories.length, 'nav');
   return (
-      <nav>
-        <div className="mainNav">
-          {isMobile && (
-            <>
-              <Link className="link" to="/general">
-                Navbar
-              </Link>
-              <button
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent"
-                aria-expanded="false"
-                aria-label="Toggle navigation"
-              >
-                <span>See </span>
-              </button>
-            </>
-          )}
-          <Link className='link' to="/general">
+    <nav>
+      <div className="mainNav">
+        <Link className="link" to="/">
           <img src={logo} alt="khabri img" className="logo" />
-          </Link>
-          <div className="linkGroup">
-            {/* <li>
-              <Link className='link' to="/about">About</Link>
-            </li> */}
-            <div className="linkGroup1">
+        </Link>
+        <div className="linkGroup">
+          {categories.length > 0 &&
+            categories.map((category, idx) => (
+              <span>
+                <Link to={`/${category.category_name}`} className='cat_label'>{category.category_name}</Link>
+              </span>
+            ))}
+        </div>
+
+        {/* <div className="linkGroup">
+          <div className="linkGroup1">
               <li>
                 <Link className="link" to="/business">
                   Business
@@ -66,9 +55,9 @@ const Navbar = () => {
                 </Link>
               </li>
             </div>
-          </div>
-        </div>
-      </nav>
+        </div> */}
+      </div>
+    </nav>
   );
 };
 
